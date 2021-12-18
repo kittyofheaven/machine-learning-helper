@@ -310,3 +310,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+
+# My function begin
+
+# making function to track & evaluate
+# Accuracy, Precision, Recall, F1-score
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+def binary_model_evaluation_result(y_true, y_pred):
+  # Calculate Accuracy, Precision, Recall, F1-score of a binary classification model
+  model_accuracy = accuracy_score(y_true, y_pred)# calculate accuracy 
+  model_precision, model_recall, model_f1, _ = precision_recall_fscore_support(y_true, y_pred, average = "weighted") # calculate Precision, Recall, F1-score
+  model_result_dict = {
+      "accuracy" : model_accuracy,
+      "precision" : model_precision,
+      "recall" : model_recall,
+      "f1" : model_f1
+  }
+  return model_result_dict
