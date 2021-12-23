@@ -8,7 +8,7 @@ This section containing all material of NLP
 - [Reading text files with Python](https://realpython.com/read-write-files-python/)
 - [What are word embeddings?](https://machinelearningmastery.com/what-are-word-embeddings/) by Machine Learning Mastery.
 - [word embeddings page on the TensorFlow website](https://www.tensorflow.org/tutorials/text/word_embeddings)
-- https://web.stanford.edu/class/cs224n/readings/cs224n-2019-notes01-wordvecs1.pdf
+- [Standford's Natural Language Processing with Deep Learning lecture notes Part 1](https://web.stanford.edu/class/cs224n/readings/cs224n-2019-notes01-wordvecs1.pdf)
 ### Conv1D
 - [Understanding Convolutional Neural Networks for Text Classification](https://aclanthology.org/W18-5408.pdf) Pdf
 - [Understanding Convolutional Neural Networks for Text Classification](https://arxiv.org/abs/1809.08037) Archive
