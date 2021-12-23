@@ -287,43 +287,38 @@ def calculate_results(y_true, y_pred):
                   "f1": model_f1}
   return model_results
 
-"""
-MIT License
+# """
+# MIT License
 
-Copyright (c) 2020 Daniel Bourke
+# Copyright (c) 2020 Daniel Bourke
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+# """
 
 # My function begin
 
-# making function to track & evaluate
-# Accuracy, Precision, Recall, F1-score
-from sklearn.metrics import accuracy_score, precision_recall_fscore_support
-def binary_model_evaluation_result(y_true, y_pred):
-  # Calculate Accuracy, Precision, Recall, F1-score of a binary classification model
-  model_accuracy = accuracy_score(y_true, y_pred)# calculate accuracy 
-  model_precision, model_recall, model_f1, _ = precision_recall_fscore_support(y_true, y_pred, average = "weighted") # calculate Precision, Recall, F1-score
-  model_result_dict = {
-      "accuracy" : model_accuracy,
-      "precision" : model_precision,
-      "recall" : model_recall,
-      "f1" : model_f1
-  }
-  return model_result_dict
+# making function to standarize nlp text
+def standardize_text(df, text_field):
+    df[text_field] = df[text_field].str.replace(r"http\S+", "")
+    df[text_field] = df[text_field].str.replace(r"http", "")
+    df[text_field] = df[text_field].str.replace(r"@\S+", "")
+    df[text_field] = df[text_field].str.replace(r"[^A-Za-z0-9(),!?@\'\`\"\_\n]", " ")
+    df[text_field] = df[text_field].str.replace(r"@", "at")
+    df[text_field] = df[text_field].str.lower()
+    return df
